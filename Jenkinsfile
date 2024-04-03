@@ -8,10 +8,8 @@ pipeline{
             }
         }
          stage('Test'){
-            steps{
-                run{
-                sh 'node app.test.js'
-                }
+            steps{ 
+            sh 'node app.test.js'  
             }
         }
         stage('Deploy/Deliver'){
