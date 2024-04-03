@@ -1,31 +1,24 @@
-pipeline {
+pipeline{
     agent any
+    tools{
+        nodejs 
+    }
 
-    stages {
-        stage('Setup') {
-            steps {
-                
-                sh 'sudo apt update'
-                sh 'sudo apt install -y nodejs'
-            }
-        }
-        stage('Build') {
-            steps {
-                
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
+    stages{
+        stage('build'){
+            steps{
               
-                sh 'npm test'
+             sh 'npm install'
             }
         }
-        stage('Deploy/Deliver') {
-            steps {
-               
-                echo 'Deploying'
-              
+         stage('Test'){
+            steps{ 
+            sh 'npm test'  
+            }
+        }
+        stage('Deploy/Deliver'){
+            steps{
+                 echo 'Deploying'
             }
         }
     }
